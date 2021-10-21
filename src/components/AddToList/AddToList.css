@@ -1,0 +1,18 @@
+.add__page {
+  max-width: 600px;
+  padding: 50px 0;
+  margin: 0 auto;
+}
+
+.add__movies .input__wrapper input {
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  padding: 12px 20px 12px 40px;
+  width: 100%;
+  background-color: darkslategrey;
+  color: white;
+  font-size: 1.2rem;
+}

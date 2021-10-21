@@ -1,6 +1,6 @@
 import React from "react";
 
-const CompletedMovies = () => {
+export const CompletedMovies = () => {
   return (
     <div>
       <h1>Movies I Have Completed</h1>
