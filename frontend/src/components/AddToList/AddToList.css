@@ -1,10 +1,10 @@
-.add__page {
+.add__to__list {
   max-width: 600px;
   padding: 4rem 0;
   margin: 0 auto;
 }
 
-.add__movies .input__wrapper input {
+.add__movies .input input {
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
@@ -14,4 +14,13 @@
   background-color: darkslategrey;
   color: white;
   font-size: 1.2rem;
+}
+
+.results {
+  padding: 0;
+  margin: 0;
+}
+
+.results li {
+  list-style: none;
 }

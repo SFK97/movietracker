@@ -5,22 +5,31 @@ import "./Navbar.css";
 const Navbar = () => {
   return (
     <>
-      {/* <div className="navbar__logo">Movie Tracker</div> */}
       <nav className="navbar">
+        <Link className="navbar__logo" to="/">
+          Movie Tracker
+        </Link>
         <ul className="navbar__links">
           <li>
             <Link to="/completedmovies">Completed</Link>
           </li>
           <li>
-            <Link to="/upcomingmovies">Upcoming</Link>
-          </li>
-          <li>
             <Link to="/favouritemovies">Favourites</Link>
           </li>
           <li>
-            <Link to="/addmovies">My List</Link>
+            <Link to="/watchedmovies">WatchList</Link>
           </li>
         </ul>
+        <Link
+          className="button"
+          to="/addmovies"
+          style={{
+            textDecoration: "none",
+            color: "white",
+          }}
+        >
+          Add
+        </Link>
       </nav>
     </>
   );
