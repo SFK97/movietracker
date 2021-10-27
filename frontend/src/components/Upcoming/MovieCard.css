@@ -1,0 +1,34 @@
+.movie__card {
+  display: flex;
+  background-color: #ccc5bc;
+}
+
+.poster {
+  width: 200px;
+}
+.poster > img {
+  width: 100px;
+  padding: 10px;
+}
+
+.poster__info {
+  padding: 10px 10px 10px;
+  width: 400px;
+  font-size: 0.6rem;
+}
+
+.add__buttons {
+  padding: 10px 10px 10px;
+  width: 200px;
+}
+
+.add__to__watchlist,
+.add__to__completed,
+.add__to__favourites {
+}
+
+.add__to__watchlist:hover,
+.add__to__completed:hover,
+.add__to__favourites:hover {
+  background-color: FDF9F3;
+}

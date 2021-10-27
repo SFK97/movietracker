@@ -1,7 +1,12 @@
 import React from "react";
+import { Favourites } from "../components/Favourites/Favourites";
 
 const FavouriteScreen = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Favourites />
+    </div>
+  );
 };
 
 export default FavouriteScreen;

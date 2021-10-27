@@ -5,17 +5,13 @@
 }
 
 .card .poster img {
-  background-color: #bdbdbd;
-  display: block;
-  border-radius: 4px;
+  background-color: #916279;
   width: 100px;
   height: 120px;
 }
 
 .poster__missing {
-  background-color: #bdbdbd;
+  background-color: #916279;
   width: 100px;
   height: 120px;
-  border-radius: 4px;
-  display: block;
 }

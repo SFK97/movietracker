@@ -1,7 +1,12 @@
 import React from "react";
+import { CompletedMovies } from "../components/CompletedMovies/CompletedMovies";
 
 const CompletedScreen = () => {
-  return <div></div>;
+  return (
+    <div>
+      <CompletedMovies />
+    </div>
+  );
 };
 
 export default CompletedScreen;

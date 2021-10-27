@@ -1,5 +1,56 @@
 .homescreen {
-  max-width: 1440px;
   margin: auto;
-  padding: 4rem 1.5rem;
+  padding: 2rem 1.5rem;
+  width: 1400px;
+}
+
+.content__wrapper {
+  background-color: #fff;
+}
+
+.homescreen__title {
+  border-left-color: #fdf9f3;
+  border-right-color: #fdf9f3;
+  border-style: solid;
+  border-top-color: #fdf9f3;
+  border-width: 1px;
+  color: #000;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 10px;
+}
+
+.content {
+  box-sizing: border-box;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  padding: 10px 10px;
+}
+
+.left__column {
+  padding-right: 10px;
+  vertical-align: top;
+  border-color: #ebebeb;
+  border-style: solid;
+  border-width: 0 1px 0 0;
+  box-sizing: border-box;
+  display: table-cell;
+  width: 725px;
+}
+
+.right__column {
+  display: table-cell;
+  padding-left: 10px;
+  vertical-align: top;
+  width: 300px;
+}
+
+.right__column > h1 {
+  background-color: #80766a;
+  border-bottom: #51483e 1px solid;
+  color: #000;
+  font-size: 14px;
+  padding: 6px 8px 4px;
+  text-align: left;
 }
