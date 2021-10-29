@@ -9,20 +9,24 @@ import CompletedScreen from "./screens/CompletedScreen";
 import WatchedScreen from "./screens/WatchedScreen";
 import AddScreen from "./screens/AddScreen";
 
+import { GlobalProvider } from "./context/GlobalState";
+
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <main>
-        <Switch>
-          <Route exact path="/" component={HomeScreen} />
-          <Route exact path="/completedmovies" component={CompletedScreen} />
-          <Route exact path="/favouritemovies" component={FavouriteScreen} />
-          <Route exact path="/watchedmovies" component={WatchedScreen} />
-          <Route exact path="/addmovies" component={AddScreen} />
-        </Switch>
-      </main>
-    </Router>
+    <GlobalProvider>
+      <Router>
+        <Navbar />
+        <main>
+          <Switch>
+            <Route exact path="/" component={HomeScreen} />
+            <Route exact path="/completedmovies" component={CompletedScreen} />
+            <Route exact path="/favouritemovies" component={FavouriteScreen} />
+            <Route exact path="/watchedmovies" component={WatchedScreen} />
+            <Route exact path="/addmovies" component={AddScreen} />
+          </Switch>
+        </main>
+      </Router>
+    </GlobalProvider>
   );
 }
 
