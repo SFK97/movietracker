@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import HomeScreen from "./screens/HomeScreen";
 import FavouriteScreen from "./screens/FavouriteScreen";
 import CompletedScreen from "./screens/CompletedScreen";
-import WatchedScreen from "./screens/WatchedScreen";
+import WatchlistScreen from "./screens/WatchlistScreen";
 import AddScreen from "./screens/AddScreen";
 
 import { GlobalProvider } from "./context/GlobalState";
@@ -21,7 +21,7 @@ function App() {
             <Route exact path="/" component={HomeScreen} />
             <Route exact path="/completedmovies" component={CompletedScreen} />
             <Route exact path="/favouritemovies" component={FavouriteScreen} />
-            <Route exact path="/watchedmovies" component={WatchedScreen} />
+            <Route exact path="/watchlistmovies" component={WatchlistScreen} />
             <Route exact path="/addmovies" component={AddScreen} />
           </Switch>
         </main>

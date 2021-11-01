@@ -17,7 +17,7 @@ const Navbar = () => {
             <Link to="/favouritemovies">Favourites</Link>
           </li>
           <li>
-            <Link to="/watchedmovies">WatchList</Link>
+            <Link to="/watchlistmovies">WatchList</Link>
           </li>
         </ul>
         <Link

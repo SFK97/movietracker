@@ -1,7 +1,7 @@
 import React from "react";
 import { WatchList } from "../components/WatchList/WatchList";
 
-const WatchedScreen = () => {
+const WatchlistScreen = () => {
   return (
     <div>
       <WatchList />
@@ -9,4 +9,4 @@ const WatchedScreen = () => {
   );
 };
 
-export default WatchedScreen;
+export default WatchlistScreen;
