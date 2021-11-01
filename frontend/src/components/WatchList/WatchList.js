@@ -8,7 +8,7 @@ export const WatchList = () => {
   return (
     <div className="watchlist">
       <h1>My WatchList</h1>
-      {watchlist > 0 ? (
+      {watchlist.length > 0 ? (
         <div className="watchlist__panel">
           {watchlist.map((movie) => (
             <WatchCard movie={movie} key={movie.id} type="watchlist" />

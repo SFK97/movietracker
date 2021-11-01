@@ -5,6 +5,8 @@ import "./Card.css";
 export const Card = ({ movie }) => {
   const { addMovieToWatchlist, watchlist } = useContext(GlobalContext);
 
+  console.log({ watchlist });
+
   let addedMovie = watchlist.find((o) => o.id === movie.id);
 
   const watchlistDisabled = addedMovie ? true : false;

@@ -6,6 +6,12 @@ const initialState = {
   watchlist: localStorage.getItem("watchlist")
     ? JSON.parse(localStorage.getItem("watchlist"))
     : [],
+  // completed: localStorage.getItem("completed")
+  //   ? JSON.parse(localStorage.getItem("completed"))
+  //   : [],
+  // favourite: localStorage.getItem("favourite")
+  //   ? JSON.parse(localStorage.getItem("favourite"))
+  //   : [],
 };
 
 //create context
@@ -17,6 +23,8 @@ export const GlobalProvider = (props) => {
 
   useEffect(() => {
     localStorage.setItem("watchlist", JSON.stringify(state.watchlist));
+    // localStorage.setItem("completed", JSON.stringify(state.completed));
+    // localStorage.setItem("favourite", JSON.stringify(state.favourite));
   }, [state]);
 
   //actions
@@ -28,6 +36,8 @@ export const GlobalProvider = (props) => {
     <GlobalContext.Provider
       value={{
         watchlist: state.watchlist,
+        // completed: state.completed,
+        // favourite: state.favourite,
         addMovieToWatchlist,
       }}
     >
