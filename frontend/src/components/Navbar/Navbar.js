@@ -11,10 +11,10 @@ const Navbar = () => {
         </Link>
         <ul className="navbar__links">
           <li>
-            <Link to="/completedmovies">Completed</Link>
+            <Link to="/watchedmovies">Completed</Link>
           </li>
           <li>
-            <Link to="/favouritemovies">Favourites</Link>
+            <Link to="/favouritedmovies">Favourites</Link>
           </li>
           <li>
             <Link to="/watchlistmovies">WatchList</Link>
