@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
-import { GlobalContext } from "../../context/GlobalState";
-import { WatchListActions } from "./WatchListActions";
+import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { Button } from "@mui/material";
+import { GlobalContext } from "../../context/GlobalState";
 
-export const WatchCard = ({ movie, type }) => {
-  const { removeMovieFromWatchlist } = useContext(GlobalContext);
+export const FavouriteCard = ({ movie, type }) => {
+  const { addMovieToWatchlist, addMovieToWatched, addMovieToFavourited } =
+    useContext(GlobalContext);
 
   const [select, setSelect] = useState(null);
   const open = select;
@@ -19,7 +19,7 @@ export const WatchCard = ({ movie, type }) => {
   };
 
   return (
-    <div className="watchcard">
+    <div className="latest__card">
       <div className="poster">
         {movie.poster_path ? (
           <img
@@ -30,7 +30,13 @@ export const WatchCard = ({ movie, type }) => {
           <div className="poster__missing"></div>
         )}
       </div>
-      <div>
+      <div className="poster__info">
+        <h2 className="poster__title">{movie.title}</h2>
+        <h3 className="release__date">
+          {movie.release_date ? movie.release_date.substring(0, 4) : "----"}
+        </h3>
+      </div>
+      <div className="add__buttons">
         <Button
           id="basic-button"
           aria-controls="basic-menu"
@@ -38,7 +44,7 @@ export const WatchCard = ({ movie, type }) => {
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
         >
-          Edit
+          Select a List
         </Button>
         <Menu
           id="basic-menu"
@@ -52,17 +58,30 @@ export const WatchCard = ({ movie, type }) => {
           <MenuItem
             onClick={() => {
               handleClose();
-              removeMovieFromWatchlist(movie.id);
+              addMovieToWatchlist(movie);
             }}
-            className="remove_from_watchlist"
+            className="add__to__watchlist"
           >
-            Remove from Watchlist
+            Add to Watchlist
           </MenuItem>
-          <MenuItem>Move to Completed</MenuItem>
-          <MenuItem>Add to Favourites</MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleClose();
+              addMovieToWatched(movie);
+            }}
+          >
+            Add to Completed
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleClose();
+              addMovieToFavourited(movie);
+            }}
+          >
+            Add to Favourites
+          </MenuItem>
         </Menu>
       </div>
-      <WatchListActions type={type} movie={movie} />
     </div>
   );
 };

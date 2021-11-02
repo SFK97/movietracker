@@ -6,7 +6,12 @@ import { GlobalContext } from "../../context/GlobalState";
 import "./Card.css";
 
 export const Card = ({ movie }) => {
-  const { addMovieToWatchlist, watchlist } = useContext(GlobalContext);
+  const {
+    addMovieToWatchlist,
+    watchlist,
+    addMovieToWatched,
+    addMovieToFavourited,
+  } = useContext(GlobalContext);
 
   let addedMovie = watchlist.find((o) => o.id === movie.id);
 
@@ -69,8 +74,22 @@ export const Card = ({ movie }) => {
           >
             Add to Watchlist
           </MenuItem>
-          <MenuItem>Add to Completed</MenuItem>
-          <MenuItem>Add to Favourites</MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleClose();
+              addMovieToWatched(movie);
+            }}
+          >
+            Add to Completed
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleClose();
+              addMovieToFavourited(movie.id);
+            }}
+          >
+            Add to Favourites
+          </MenuItem>
         </Menu>
       </div>
     </div>

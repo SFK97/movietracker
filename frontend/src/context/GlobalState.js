@@ -6,12 +6,12 @@ const initialState = {
   watchlist: localStorage.getItem("watchlist")
     ? JSON.parse(localStorage.getItem("watchlist"))
     : [],
-  // completed: localStorage.getItem("completed")
-  //   ? JSON.parse(localStorage.getItem("completed"))
-  //   : [],
-  // favourite: localStorage.getItem("favourite")
-  //   ? JSON.parse(localStorage.getItem("favourite"))
-  //   : [],
+  watched: localStorage.getItem("watched")
+    ? JSON.parse(localStorage.getItem("watched"))
+    : [],
+  favourited: localStorage.getItem("favourited")
+    ? JSON.parse(localStorage.getItem("favourited"))
+    : [],
 };
 
 //create context
@@ -23,8 +23,8 @@ export const GlobalProvider = (props) => {
 
   useEffect(() => {
     localStorage.setItem("watchlist", JSON.stringify(state.watchlist));
-    // localStorage.setItem("completed", JSON.stringify(state.completed));
-    // localStorage.setItem("favourite", JSON.stringify(state.favourite));
+    localStorage.setItem("watched", JSON.stringify(state.watched));
+    localStorage.setItem("favourited", JSON.stringify(state.favourited));
   }, [state]);
 
   //actions
@@ -36,44 +36,44 @@ export const GlobalProvider = (props) => {
     dispatch({ type: "REMOVE_MOVIE_FROM_WATCHLIST", payload: id });
   };
 
-  // const moveMovieToWatchlist = (movie) => {
-  //   dispatch({ type: "MOVE_MOVIE_TO_WATCHLIST", payload: movie });
-  // };
+  const moveMovieToWatchlist = (movie) => {
+    dispatch({ type: "MOVE_MOVIE_TO_WATCHLIST", payload: movie });
+  };
 
-  // const addMovieToCompleted = (movie) => {
-  //   dispatch({ type: "ADD_MOVIE_TO_COMPLETED", payload: movie });
-  // };
+  const addMovieToWatched = (movie) => {
+    dispatch({ type: "ADD_MOVIE_TO_WATCHED", payload: movie });
+  };
 
-  // const removeMovieFromCompleted = (id) => {
-  //   dispatch({ type: "REMOVE_MOVIE_FROM_COMPLETED", payload: id });
-  // };
+  const removeMovieFromWatched = (id) => {
+    dispatch({ type: "REMOVE_MOVIE_FROM_WATCHED", payload: id });
+  };
 
-  // const moveMovieToCompleted = (movie) => {
-  //   dispatch({ type: "MOVE_MOVIE_TO_COMPLETED", payload: movie});
-  // };
+  const moveMovieToWatched = (movie) => {
+    dispatch({ type: "MOVE_MOVIE_TO_WATCHED", payload: movie });
+  };
 
-  // const addMovieToFavourite = (movie) => {
-  //   dispatch({ type: "ADD_MOVIE_TO_FAVOURITE", payload: movie });
-  // };
+  const addMovieToFavourited = (movie) => {
+    dispatch({ type: "ADD_MOVIE_TO_FAVOURITED", payload: movie });
+  };
 
-  // const removeMovieFromFavourite = (id) => {
-  //   dispatch({ type: "REMOVE_MOVIE_FROM_FAVOURITE", payload: id });
-  // };
+  const removeMovieFromFavourited = (id) => {
+    dispatch({ type: "REMOVE_MOVIE_FROM_FAVOURITED", payload: id });
+  };
 
   return (
     <GlobalContext.Provider
       value={{
         watchlist: state.watchlist,
-        completed: state.completed,
-        favourite: state.favourite,
+        watched: state.watched,
+        favourited: state.favourited,
         addMovieToWatchlist,
         removeMovieFromWatchlist,
-        // moveMovieToWatchlist,
-        // addMovieToCompleted,
-        // removeMovieFromCompleted,
-        // moveMovieToCompleted,
-        // addMovieToFavourite,
-        // removeMovieToFavourite,
+        moveMovieToWatchlist,
+        addMovieToWatched,
+        removeMovieFromWatched,
+        moveMovieToWatched,
+        addMovieToFavourited,
+        removeMovieFromFavourited,
       }}
     >
       {props.children}

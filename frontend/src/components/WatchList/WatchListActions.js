@@ -4,17 +4,16 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 export const WatchListActions = ({ movie, type }) => {
-  const {
-    removeMovieFromWatchlist,
-    addMovieToCompleted,
-    moveToWatchlist,
-    removeFromCompleted,
-  } = useContext(GlobalContext);
+  const { removeMovieFromWatchlist, addMovieToWatched } =
+    useContext(GlobalContext);
   return (
     <div>
-      <AddCircleOutlineIcon />
-
-      <DeleteIcon onClick={() => removeMovieFromWatchlist(movie.id)} />
+      {type === "watchlist" && (
+        <>
+          <AddCircleOutlineIcon onClick={() => addMovieToWatched(movie)} />
+          <DeleteIcon onClick={() => removeMovieFromWatchlist(movie.id)} />
+        </>
+      )}
     </div>
   );
 };

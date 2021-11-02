@@ -1,17 +1,17 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalState";
-import { WatchCard } from "./WatchCard";
+import { WatchlistCard } from "./WatchlistCard";
 
-export const WatchList = () => {
+export const Watchlist = () => {
   const { watchlist } = useContext(GlobalContext);
 
   return (
     <div className="watchlist">
       <h1>My WatchList</h1>
-      {watchlist.length > 0 ? (
+      {watchlist && watchlist.length > 0 ? (
         <div className="watchlist__panel">
           {watchlist.map((movie) => (
-            <WatchCard movie={movie} key={movie.id} type="watchlist" />
+            <WatchlistCard movie={movie} key={movie.id} type="watchlist" />
           ))}
         </div>
       ) : (

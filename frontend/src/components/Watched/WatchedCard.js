@@ -3,15 +3,14 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { GlobalContext } from "../../context/GlobalState";
-import "./LatestCard.css";
 
-export const LatestCard = ({ movie }) => {
-  const { addMovieToWatchlist, watchlist, addMovieToCompleted } =
-    useContext(GlobalContext);
-
-  let addedMovie = watchlist.find((o) => o.id === movie.id);
-
-  const watchlistDisabled = addedMovie ? true : false;
+export const WatchedCard = ({ movie, type }) => {
+  const {
+    addMovieToWatchlist,
+    addMovieToWatched,
+    addMovieToFavourited,
+    moveMovieToWatchlist,
+  } = useContext(GlobalContext);
 
   const [select, setSelect] = useState(null);
   const open = select;
@@ -63,22 +62,28 @@ export const LatestCard = ({ movie }) => {
           <MenuItem
             onClick={() => {
               handleClose();
-              addMovieToWatchlist(movie);
+              moveMovieToWatchlist(movie);
             }}
             className="add__to__watchlist"
-            disabled={watchlistDisabled}
           >
             Add to Watchlist
           </MenuItem>
           <MenuItem
             onClick={() => {
               handleClose();
-              addMovieToCompleted(movie);
+              addMovieToWatched(movie);
             }}
           >
             Add to Completed
           </MenuItem>
-          <MenuItem>Add to Favourites</MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleClose();
+              addMovieToFavourited(movie);
+            }}
+          >
+            Add to Favourites
+          </MenuItem>
         </Menu>
       </div>
     </div>

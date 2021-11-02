@@ -12,50 +12,46 @@ export default (state, action) => {
           (movie) => movie.id !== action.payload
         ),
       };
-    case "ADD_MOVIE_TO_COMPLETED":
-      return {
-        ...state,
-        completed: [action.payload, ...state.completed],
-      };
-    case "REMOVE_MOVIE_FROM_COMPLETED":
-      return {
-        ...state,
-        completed: state.completed.filter(
-          (movie) => movie.id !== action.payload
-        ),
-      };
-    case "MOVE_MOVIE_TO_COMPLETED":
+    case "ADD_MOVIE_TO_WATCHED":
       return {
         ...state,
         watchlist: state.watchlist.filter(
           (movie) => movie.id !== action.payload.id
         ),
-        completed: [action.payload, ...state.completed],
+        watched: [action.payload, ...state.watched],
       };
+    case "REMOVE_MOVIE_FROM_WATCHED":
+      return {
+        ...state,
+        watched: state.watched.filter((movie) => movie.id !== action.payload),
+      };
+
+    // case "MOVE_MOVIE_TO_COMPLETED":
+
     case "MOVE_MOVIE_TO_WATCHLIST":
       return {
         ...state,
-        completed: state.completed.filter(
+        watched: state.watched.filter(
           (movie) => movie.id !== action.payload.id
         ),
         watchlist: [action.payload, ...state.watchlist],
       };
-    case "ADD_MOVIE_TO_FAVOURITE":
+    case "ADD_MOVIE_TO_FAVOURITED":
       return {
         ...state,
-        favourite: [action.payload, ...state.completed],
+        favourited: [action.payload, ...state.watched],
       };
-    case "REMOVE_MOVIE_FROM_FAVOURITE":
+    case "REMOVE_MOVIE_FROM_FAVOURITED":
       return {
         ...state,
-        favourite: state.completed.filter(
+        favourited: state.watched.filter(
           (movie) => movie.id !== action.payload
         ),
       };
-    case "MOVE_FAVOURITE_TO_WATCHLIST":
+    case "MOVE_FAVOURITED_TO_WATCHLIST":
       return {
         ...state,
-        favourite: state.favourite.filter(
+        favourited: state.favourited.filter(
           (movie) => movie.id !== action.payload.id
         ),
         watchlist: [action.payload, ...state.watchlist],

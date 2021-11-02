@@ -1,10 +1,10 @@
 import React from "react";
-import { WatchList } from "../components/WatchList/WatchList";
+import { Watchlist } from "../components/Watchlist/Watchlist";
 
 const WatchlistScreen = () => {
   return (
     <div>
-      <WatchList />
+      <Watchlist />
     </div>
   );
 };
