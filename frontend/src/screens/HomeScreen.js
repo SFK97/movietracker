@@ -1,5 +1,6 @@
 import React from "react";
 import "./HomeScreen.css";
+import { AddToList } from "../components/AddToList/AddToList";
 import { UpcomingMovies } from "../components/Upcoming/UpcomingMovies";
 import { LatestMovies } from "../components/Latest/LatestMovies";
 
@@ -9,6 +10,9 @@ const HomeScreen = () => {
       <div className="homescreen">
         <div className="content__wrapper">
           <h1 className="homescreen__title">Welcome to Movie Tracker</h1>
+          <div className="search__bar">
+            <AddToList />
+          </div>
           <div className="content">
             <div className="left__column">
               <LatestMovies />

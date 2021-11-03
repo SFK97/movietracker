@@ -1,6 +1,6 @@
-.movie__card {
-  display: flex;
+.latest__card {
   background-color: #ccc5bc;
+  display: flex;
 }
 
 .poster {

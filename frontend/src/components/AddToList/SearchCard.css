@@ -1,10 +1,10 @@
-.card {
+.search__card {
   display: flex;
-  padding: 4rem 0;
+  padding: 2rem 0;
   margin: 0 auto;
 }
 
-.card .poster img {
+.search__card .poster img {
   background-color: #916279;
   width: 100px;
   height: 120px;

@@ -6,8 +6,16 @@ import MenuItem from "@mui/material/MenuItem";
 import { Button } from "@mui/material";
 
 export const WatchlistCard = ({ movie, type }) => {
-  const { removeMovieFromWatchlist, moveMovieToWatched, addMovieToFavourited } =
-    useContext(GlobalContext);
+  const {
+    removeMovieFromWatchlist,
+    moveMovieToWatched,
+    addMovieToFavourited,
+    favourited,
+  } = useContext(GlobalContext);
+
+  let movieFavourited = favourited.find((o) => o.id === movie.id);
+
+  const favouritedDisabled = movieFavourited ? true : false;
 
   const [select, setSelect] = useState(null);
   const open = select;
@@ -30,6 +38,12 @@ export const WatchlistCard = ({ movie, type }) => {
         ) : (
           <div className="poster__missing"></div>
         )}
+        <div className="poster__info">
+          <h2 className="poster__title">{movie.title}</h2>
+          <h3 className="release__date">
+            {movie.release_date ? movie.release_date.substring(0, 4) : "----"}
+          </h3>
+        </div>
       </div>
       <div>
         <Button
@@ -53,15 +67,6 @@ export const WatchlistCard = ({ movie, type }) => {
           <MenuItem
             onClick={() => {
               handleClose();
-              removeMovieFromWatchlist(movie.id);
-            }}
-            className="remove_from_watchlist"
-          >
-            Remove from Watchlist
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleClose();
               moveMovieToWatched(movie);
             }}
           >
@@ -72,8 +77,18 @@ export const WatchlistCard = ({ movie, type }) => {
               handleClose();
               addMovieToFavourited(movie);
             }}
+            disabled={favouritedDisabled}
           >
             Add to Favourites
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleClose();
+              removeMovieFromWatchlist(movie.id);
+            }}
+            className="remove_from_watchlist"
+          >
+            Remove
           </MenuItem>
         </Menu>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card } from "./Card";
+import { SearchCard } from "./SearchCard";
 
 import "./AddToList.css";
 
@@ -40,7 +40,7 @@ export const AddToList = () => {
           <ul className="results">
             {results.map((movie) => (
               <li key={movie.id}>
-                <Card movie={movie} />
+                <SearchCard movie={movie} />
               </li>
             ))}
           </ul>

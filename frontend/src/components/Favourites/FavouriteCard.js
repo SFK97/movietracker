@@ -5,8 +5,19 @@ import MenuItem from "@mui/material/MenuItem";
 import { GlobalContext } from "../../context/GlobalState";
 
 export const FavouriteCard = ({ movie, type }) => {
-  const { addMovieToWatchlist, addMovieToWatched, addMovieToFavourited } =
-    useContext(GlobalContext);
+  const {
+    moveMovieToWatchlist,
+    moveMovieToWatched,
+    removeMovieFromFavourited,
+    watchlist,
+    watched,
+  } = useContext(GlobalContext);
+
+  let watchlistMovie = watchlist.find((o) => o.id === movie.id);
+  let watchedMovie = watched.find((o) => o.id === movie.id);
+
+  const watchlistDisabled = watchlistMovie ? true : false;
+  const watchedDisabled = watchedMovie ? true : false;
 
   const [select, setSelect] = useState(null);
   const open = select;
@@ -19,7 +30,7 @@ export const FavouriteCard = ({ movie, type }) => {
   };
 
   return (
-    <div className="latest__card">
+    <div className="favourite__card">
       <div className="poster">
         {movie.poster_path ? (
           <img
@@ -44,7 +55,7 @@ export const FavouriteCard = ({ movie, type }) => {
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
         >
-          Select a List
+          Edit
         </Button>
         <Menu
           id="basic-menu"
@@ -58,8 +69,9 @@ export const FavouriteCard = ({ movie, type }) => {
           <MenuItem
             onClick={() => {
               handleClose();
-              addMovieToWatchlist(movie);
+              moveMovieToWatchlist(movie);
             }}
+            disabled={watchlistDisabled}
             className="add__to__watchlist"
           >
             Add to Watchlist
@@ -67,18 +79,19 @@ export const FavouriteCard = ({ movie, type }) => {
           <MenuItem
             onClick={() => {
               handleClose();
-              addMovieToWatched(movie);
+              moveMovieToWatched(movie);
             }}
+            disabled={watchedDisabled}
           >
-            Add to Completed
+            Add to Watched
           </MenuItem>
           <MenuItem
             onClick={() => {
               handleClose();
-              addMovieToFavourited(movie);
+              removeMovieFromFavourited(movie.id);
             }}
           >
-            Add to Favourites
+            Remove
           </MenuItem>
         </Menu>
       </div>

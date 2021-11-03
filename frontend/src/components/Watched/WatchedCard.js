@@ -6,11 +6,15 @@ import { GlobalContext } from "../../context/GlobalState";
 
 export const WatchedCard = ({ movie, type }) => {
   const {
-    addMovieToWatchlist,
-    addMovieToWatched,
+    removeMovieFromWatched,
     addMovieToFavourited,
     moveMovieToWatchlist,
+    favourited,
   } = useContext(GlobalContext);
+
+  let favouritedMovie = favourited.find((o) => o.id === movie.id);
+
+  const favouritedDisabled = favouritedMovie ? true : false;
 
   const [select, setSelect] = useState(null);
   const open = select;
@@ -23,7 +27,7 @@ export const WatchedCard = ({ movie, type }) => {
   };
 
   return (
-    <div className="latest__card">
+    <div className="watched__card">
       <div className="poster">
         {movie.poster_path ? (
           <img
@@ -48,7 +52,7 @@ export const WatchedCard = ({ movie, type }) => {
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
         >
-          Select a List
+          Edit
         </Button>
         <Menu
           id="basic-menu"
@@ -66,23 +70,25 @@ export const WatchedCard = ({ movie, type }) => {
             }}
             className="add__to__watchlist"
           >
-            Add to Watchlist
+            Move to Watchlist
           </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleClose();
-              addMovieToWatched(movie);
-            }}
-          >
-            Add to Completed
-          </MenuItem>
+
           <MenuItem
             onClick={() => {
               handleClose();
               addMovieToFavourited(movie);
             }}
+            disabled={favouritedDisabled}
           >
             Add to Favourites
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleClose();
+              removeMovieFromWatched(movie.id);
+            }}
+          >
+            Remove
           </MenuItem>
         </Menu>
       </div>

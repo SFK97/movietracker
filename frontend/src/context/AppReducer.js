@@ -25,8 +25,14 @@ export default (state, action) => {
         ...state,
         watched: state.watched.filter((movie) => movie.id !== action.payload),
       };
-
-    // case "MOVE_MOVIE_TO_COMPLETED":
+    case "MOVE_MOVIE_TO_WATCHED":
+      return {
+        ...state,
+        watchlist: state.watchlist.filter(
+          (movie) => movie.id !== action.payload.id
+        ),
+        watched: [action.payload, ...state.watched],
+      };
 
     case "MOVE_MOVIE_TO_WATCHLIST":
       return {
@@ -44,7 +50,7 @@ export default (state, action) => {
     case "REMOVE_MOVIE_FROM_FAVOURITED":
       return {
         ...state,
-        favourited: state.watched.filter(
+        favourited: state.favourited.filter(
           (movie) => movie.id !== action.payload
         ),
       };

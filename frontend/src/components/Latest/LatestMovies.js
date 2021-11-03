@@ -20,6 +20,7 @@ export const LatestMovies = () => {
 
   return (
     <div className="latest">
+      <div className="title">Popular Movies Right Now</div>
       <div className="container">
         {results && results.length > 0 && (
           <ul className="results">
